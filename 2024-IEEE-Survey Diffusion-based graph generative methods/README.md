@@ -1,62 +1,79 @@
-# 📚 AI Studies Repository
+# A Survey on Diffusion-Based Graph Generative Methods
 
-Welcome to the **AI Studies Repository**! This repository is a collection of research papers, brief summaries, and implementations related to various topics in artificial intelligence.
+## Introduction
 
+Graph generative methods are essential for generating new graphs, which play a crucial role in various applications such as drug discovery, material science, and social network analysis. Among these techniques, diffusion-based generative models have emerged as highly effective due to their robust theoretical foundations. This survey aims to provide a comprehensive overview of diffusion-based graph generative methods, highlighting their key principles, paradigms, applications, and formulas.
 
-## 📝 Purpose
+## Diffusion Methods: An Overview
 
-In this repository, you will find:
-- Research papers I've read.
-- Brief summaries of each paper.
-- Implementations and experiments inspired by the papers.
+Diffusion-based generative methods involve a two-step process: a forward diffusion process and a reverse generative process. The forward process gradually adds noise to the data until it becomes nearly random, while the reverse process reconstructs the data from the noisy version using learned models.
 
-## 📁 Repository Structure
+There are three main paradigms in diffusion methods:
+1. **Denoising Diffusion Probabilistic Models (DDPMs)**
+2. **Score-Based Generative Models (SGMs)**
+3. **Stochastic Differential Equations (SDEs)**
 
-- **Papers/**: Contains the research papers in PDF format.
-- **Summaries/**: Contains brief summaries of each paper.
-- **Implementations/**: Contains code implementations and experiments based on the papers.
+Each paradigm uses a distinct approach to model and generate data through the diffusion process.
 
-## 🛠️ Technologies Used
+## Graph Learning Problem Formulation
 
-- Python
-- TensorFlow
-- PyTorch
-- Jupyter Notebooks
+Graphs are defined by vertices (nodes) and edges (connections). The goal is to learn a probabilistic distribution over graphs to sample new, realistic graphs. This involves learning the underlying distribution through the diffusion process and generating graphs through the reverse process.
 
-## 🎯 Goals
+## Denoising Diffusion Probabilistic Models (DDPMs)
 
-- To keep track of my learning journey in artificial intelligence.
-- To share insights and implementations with the community.
-- To foster collaboration and discussions on AI research.
+DDPMs operate with two Markov chains: the forward chain, which corrupts the data by adding noise, and the reverse chain, which denoises the data. The processes are defined as follows:
 
-## 🚀 How to Use
+**Forward Process:**
+\[ q(x_t|x_{t-1}) = N(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I) \]
 
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/your-username/ai-studies.git
-    cd ai-studies
-    ```
+**Reverse Process:**
+\[ p_\theta(x_{t-1}|x_t) = N(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 I) \]
 
-2. **Explore the Papers**:
-    - Navigate to the `[PAPER_TITLE]/[PAPER_TITLE].pdf` directory to find the research papers.
+The forward process iteratively adds noise with variance \(\beta_t\) to the data, and the reverse process reconstructs the data by learning the mean \(\mu_\theta\) and variance \(\sigma_t^2\).
 
-3. **Read Summaries**:
-    - Check out the `[PAPER_TITLE]/Summary/` directory for brief summaries of each paper.
+## Score-Based Generative Models (SGMs)
 
-4. **Run Implementations**:
-    - Visit the `[PAPER_TITLE]/Implementation/` directory to find code and experiments.
-    - Follow the instructions in each subdirectory to run the code.
+SGMs rely on score matching to estimate the gradient (score) of the data distribution. The key idea is to model the score function of the data distribution and use it to generate new samples. The training objective is to minimize the following loss:
 
-## 🌟 Contributions
+\[ E[\lambda(t) || \epsilon + \sigma_t s_\theta(x_t, t) ||^2] + \text{const} \]
 
-Contributions are welcome! If you have read a paper that you'd like to add or have improvements for existing content, feel free to open a pull request.
+Here, \(\lambda(t)\) is a weighting function, \(\epsilon\) is noise, and \(s_\theta(x_t, t)\) is the score function parameterized by \(\theta\). SGMs can handle both continuous and discrete data, making them versatile for various graph generation tasks.
 
-## 📬 Contact
+## Stochastic Differential Equations (SDEs)
 
-If you have any questions or suggestions, feel free to reach out:
+SDEs provide a mathematical framework to model the diffusion process. The data evolution is described by an SDE:
 
-- GitHub: [your-username](https://github.com/mirzaie95)
+\[ dx = f(x, t)dt + g(t)dw \]
 
----
+where \(f(x, t)\) is the drift coefficient, \(g(t)\) is the diffusion coefficient, and \(dw\) is a Wiener process. The reverse process involves solving the SDE backward in time to generate data from noise.
 
-Happy studying and coding! 🎓🤖
+## Applications in Molecule Generation
+
+Diffusion-based graph generative methods have been particularly successful in molecule generation, with three main applications:
+
+1. **De Novo Molecule Design:** Generating novel molecules with desired properties, tackling the discrete nature of molecular graphs using methods like VAEs, GANs, and 3D molecule geometries.
+   
+2. **Conformation Design:** Generating 3D structures of molecules, crucial for understanding their function and interaction with other molecules, using techniques like Noise Conditional Score Networks and Langevin Dynamics (e.g., ConfGF).
+
+3. **Ligand Design and Docking:** Designing molecules that can bind to specific protein targets, essential for drug discovery, incorporating out-of-distribution information to ensure the generated molecules are effective (e.g., DIFFDOCK).
+
+## Evaluation Metrics
+
+Evaluating the performance of graph generative models involves several metrics:
+- **Validity:** The generated graphs should represent valid structures.
+- **Uniqueness:** The generated graphs should be distinct from each other.
+- **Novelty:** The generated graphs should differ from those in the training set.
+
+Specific datasets and benchmarks are used to assess these metrics, ensuring that the models produce high-quality results.
+
+## Challenges and Future Directions
+
+Despite the progress, there are several challenges in diffusion-based graph generative methods:
+- **Discrete Nature of Graphs:** Handling the combinatorial nature of graphs remains difficult.
+- **Training Complexity:** Training these models requires significant computational resources and time.
+
+Future directions include developing more efficient algorithms, expanding applications to other domains, and integrating 3D structures into the generative process.
+
+## Conclusion
+
+Diffusion-based graph generative methods represent a promising field with significant potential for various applications. This survey provides a detailed overview of the key paradigms, methods, and applications, highlighting the strengths and challenges of these approaches. With ongoing research and development, diffusion-based methods are poised to make substantial contributions to graph generation and its numerous applications.
