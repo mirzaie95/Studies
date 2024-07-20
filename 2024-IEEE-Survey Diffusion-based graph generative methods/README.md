@@ -24,10 +24,10 @@ Graphs are defined by vertices (nodes) and edges (connections). The goal is to l
 DDPMs operate with two Markov chains: the forward chain, which corrupts the data by adding noise, and the reverse chain, which denoises the data. The processes are defined as follows:
 
 **Forward Process:**
-$ q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t \mathbf{I}) $
+$$ q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t \mathbf{I}) $$
 
 **Reverse Process:**
-$ p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 \mathbf{I}) $
+$$ p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 \mathbf{I}) $$
 
 The forward process iteratively adds noise with variance $\beta_t$ to the data, and the reverse process reconstructs the data by learning the mean $\mu_\theta$ and variance $\sigma_t^2$.
 
@@ -35,7 +35,7 @@ The forward process iteratively adds noise with variance $\beta_t$ to the data, 
 
 SGMs rely on score matching to estimate the gradient (score) of the data distribution. The key idea is to model the score function of the data distribution and use it to generate new samples. The training objective is to minimize the following loss:
 
-$ \mathbb{E}[\lambda(t) || \epsilon + \sigma_t s_\theta(x_t, t) ||^2] + \text{const} $
+$$ \mathbb{E}[\lambda(t) || \epsilon + \sigma_t s_\theta(x_t, t) ||^2] + \text{const} $$
 
 Here, $\lambda(t)$ is a weighting function, $\epsilon$ is noise, and $s_\theta(x_t, t)$ is the score function parameterized by $\theta$. SGMs can handle both continuous and discrete data, making them versatile for various graph generation tasks.
 
@@ -43,9 +43,9 @@ Here, $\lambda(t)$ is a weighting function, $\epsilon$ is noise, and $s_\theta(x
 
 SDEs provide a mathematical framework to model the diffusion process. The data evolution is described by an SDE:
 
-$ dx = f(x, t)dt + g(t)dw $
+$$ dx = f(x, t)dt + g(t)dw $$
 
-where $f(x, t)$ is the drift coefficient, $g(t)$ is the diffusion coefficient, and $dw$ is a Wiener process. The reverse process involves solving the SDE backward in time to generate data from noise.
+where $f(x, t)$ is the drift coefficient, $g(t)$ is the diffusion coefficient, and $$dw$$ is a Wiener process. The reverse process involves solving the SDE backward in time to generate data from noise.
 
 ## Applications in Molecule Generation
 
