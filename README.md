@@ -1,6 +1,6 @@
 # 📚 AI Studies Repository
 
-Welcome to the **AI Studies Repository**! This repository is a collection of research papers, brief summaries, and implementations related to various topics in artificial intelligence.
+Welcome to the **AI Studies Repository**! This repository is a collection of research papers, brief summaries, and implementations related to various topics in artificial intelligence 🎓🤖
 
 
 ## 📝 Purpose
@@ -55,8 +55,6 @@ Contributions are welcome! If you have read a paper that you'd like to add or ha
 
 If you have any questions or suggestions, feel free to reach out:
 
-- GitHub: [your-username](https://github.com/mirzaie95)
+- GitHub: [mirzaie95](https://github.com/mirzaie95)
 
 ---
-
-Happy studying and coding! 🎓🤖
