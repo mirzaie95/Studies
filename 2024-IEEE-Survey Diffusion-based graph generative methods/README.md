@@ -24,9 +24,11 @@ Graphs are defined by vertices (nodes) and edges (connections). The goal is to l
 DDPMs operate with two Markov chains: the forward chain, which corrupts the data by adding noise, and the reverse chain, which denoises the data. The processes are defined as follows:
 
 **Forward Process:**
+
 $$ q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t \mathbf{I}) $$
 
 **Reverse Process:**
+
 $$ p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 \mathbf{I}) $$
 
 The forward process iteratively adds noise with variance $\beta_t$ to the data, and the reverse process reconstructs the data by learning the mean $\mu_\theta$ and variance $\sigma_t^2$.
@@ -45,7 +47,7 @@ SDEs provide a mathematical framework to model the diffusion process. The data e
 
 $$ dx = f(x, t)dt + g(t)dw $$
 
-where $f(x, t)$ is the drift coefficient, $g(t)$ is the diffusion coefficient, and $$dw$$ is a Wiener process. The reverse process involves solving the SDE backward in time to generate data from noise.
+where $f(x, t)$ is the drift coefficient, $g(t)$ is the diffusion coefficient, and $dw$ is a Wiener process. The reverse process involves solving the SDE backward in time to generate data from noise.
 
 ## Applications in Molecule Generation
 
