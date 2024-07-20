@@ -38,13 +38,13 @@ In this repository, you will find:
     ```
 
 2. **Explore the Papers**:
-    - Navigate to the `Papers/` directory to find the research papers.
+    - Navigate to the `[PAPER_TITLE]/[PAPER_TITLE].pdf` directory to find the research papers.
 
 3. **Read Summaries**:
-    - Check out the `Summaries/` directory for brief summaries of each paper.
+    - Check out the `[PAPER_TITLE]/Summary/` directory for brief summaries of each paper.
 
 4. **Run Implementations**:
-    - Visit the `Implementations/` directory to find code and experiments.
+    - Visit the `[PAPER_TITLE]/Implementation/` directory to find code and experiments.
     - Follow the instructions in each subdirectory to run the code.
 
 ## 🌟 Contributions
