@@ -55,7 +55,6 @@ Contributions are welcome! If you have read a paper that you'd like to add or ha
 
 If you have any questions or suggestions, feel free to reach out:
 
-- Email: mirzaie.ma95@example.com
 - GitHub: [your-username](https://github.com/mirzaie95)
 
 ---
